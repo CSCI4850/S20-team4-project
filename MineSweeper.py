@@ -215,6 +215,7 @@ def playgame():
                 return
 
         showgrid(currgrid)
+        print("hello world")
         print(message)
 
 playgame()
