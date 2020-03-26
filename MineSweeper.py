@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import random
+import csv
 import re
 import time
 from string import ascii_lowercase
@@ -139,6 +140,22 @@ def parseinput(inputstring, gridsize, helpmessage):
     return {'cell': cell, 'flag': flag, 'message': message}
 
 
+def csvpush(grid):
+    with open ('grid.csv', mode='w') as grid_file:
+        file_writer = csv.writer(grid_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        file_writer.writerow([grid[0][0], grid[0][1], grid[0][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+        file_writer.writerow([grid[1][0], grid[1][1], grid[1][2], grid[1][3], grid[1][4], grid[1][5], grid[1][6], grid[1][7], grid[1][8], grid[1][9]])
+        file_writer.writerow([grid[2][0], grid[2][1], grid[2][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+        file_writer.writerow([grid[3][0], grid[3][1], grid[3][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+        file_writer.writerow([grid[4][0], grid[4][1], grid[4][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+        file_writer.writerow([grid[5][0], grid[5][1], grid[5][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+        file_writer.writerow([grid[6][0], grid[6][1], grid[6][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+        file_writer.writerow([grid[7][0], grid[7][1], grid[7][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+        file_writer.writerow([grid[8][0], grid[8][1], grid[8][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+        file_writer.writerow([grid[9][0], grid[9][1], grid[9][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8], grid[0][9]])
+
+
+
 def playgame():
     gridsize = 9
     numberofmines = 10
@@ -215,6 +232,7 @@ def playgame():
                 return
 
         showgrid(currgrid)
+        csvpush(grid)
         print(message)
 
 playgame()
