@@ -7,10 +7,12 @@ from string import ascii_lowercase
 
 
 def setupgrid(gridsize, start, numberofmines):
+    # Initialize empty grid
     emptygrid = [['0' for i in range(gridsize)] for i in range(gridsize)]
-
+    
     mines = getmines(emptygrid, start, numberofmines)
-
+    
+    # Label mine spaces
     for i, j in mines:
         emptygrid[i][j] = 'X'
 
@@ -18,7 +20,7 @@ def setupgrid(gridsize, start, numberofmines):
 
     return (grid, mines)
 
-
+# Output the grid
 def showgrid(grid):
     gridsize = len(grid)
 
@@ -52,7 +54,7 @@ def getrandomcell(grid):
 
     return (a, b)
 
-
+# Used to initialize neighboring cells / safe cells
 def getneighbors(grid, rowno, colno):
     gridsize = len(grid)
     neighbors = []
@@ -66,10 +68,11 @@ def getneighbors(grid, rowno, colno):
 
     return neighbors
 
-
+# Once the neighbors are initialized, this fills in random remaining spaces,
+# excluding the starting cell and neighbors, up to the requested number of mines
 def getmines(grid, start, numberofmines):
     mines = []
-    neighbors = getneighbors(grid, *start)
+    neighbors = getneighbors(grid, *start) # initialize unavailable spaces
 
     for i in range(numberofmines):
         cell = getrandomcell(grid)
@@ -121,9 +124,11 @@ def parseinput(inputstring, gridsize, helpmessage):
     flag = False
     message = "Invalid cell. " + helpmessage
 
+    # Reformat input for more flexible acceptance
     pattern = r'([a-{}])([0-9]+)(f?)'.format(ascii_lowercase[gridsize - 1])
     validinput = re.match(pattern, inputstring)
 
+    # Enter input into the associated grid space
     if inputstring == 'help':
         message = helpmessage
 
