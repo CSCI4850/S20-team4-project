@@ -205,6 +205,11 @@ def playgame():
 
     while True:
         minesleft = numberofmines - len(flags)
+        
+        #implementation of neural net portion
+        #tempgrid = currgrid
+        #csvpush(tempgrid)
+
         prompt = input('Enter the cell ({} mines left): '.format(minesleft))
         result = parseinput(prompt, gridsize, helpmessage + '\n')
 
@@ -263,11 +268,7 @@ def playgame():
                 return
 
         showgrid(currgrid)
-<<<<<<< HEAD
-        print("hello world")
-=======
-        csvpush(currgrid)
->>>>>>> lotivio-branch
+
         print(message)
 
 playgame()
