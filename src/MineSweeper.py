@@ -144,7 +144,6 @@ def parseinput(inputstring, gridsize, helpmessage):
 
     return {'cell': cell, 'flag': flag, 'message': message}
 
-
 def csvpush(grid):
     grid = csvload(grid)
     with open ('grid.csv', mode='w') as grid_file:
@@ -185,7 +184,10 @@ def csvload(grid):
     
     return grid
      
-
+def promptread():
+    fstream=open('response.txt','r')
+    thing = fstream.read()
+    return thing
 
 def playgame():
     gridsize = 9
@@ -211,6 +213,7 @@ def playgame():
         #csvpush(tempgrid)
 
         prompt = input('Enter the cell ({} mines left): '.format(minesleft))
+        #prompt=promptread()
         result = parseinput(prompt, gridsize, helpmessage + '\n')
 
         message = result['message']
