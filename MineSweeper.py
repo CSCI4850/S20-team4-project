@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import random
+import csv
 import re
 import time
 from string import ascii_lowercase
@@ -144,6 +145,48 @@ def parseinput(inputstring, gridsize, helpmessage):
     return {'cell': cell, 'flag': flag, 'message': message}
 
 
+def csvpush(grid):
+    grid = csvload(grid)
+    with open ('grid.csv', mode='w') as grid_file:
+        file_writer = csv.writer(grid_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        file_writer.writerow([grid[0][0], grid[0][1], grid[0][2], grid[0][3], grid[0][4], grid[0][5], grid[0][6], grid[0][7], grid[0][8]])
+        file_writer.writerow([grid[1][0], grid[1][1], grid[1][2], grid[1][3], grid[1][4], grid[1][5], grid[1][6], grid[1][7], grid[1][8]])
+        file_writer.writerow([grid[2][0], grid[2][1], grid[2][2], grid[2][3], grid[2][4], grid[2][5], grid[2][6], grid[2][7], grid[2][8]])
+        file_writer.writerow([grid[3][0], grid[3][1], grid[3][2], grid[3][3], grid[3][4], grid[3][5], grid[3][6], grid[3][7], grid[3][8]])
+        file_writer.writerow([grid[4][0], grid[4][1], grid[4][2], grid[4][3], grid[4][4], grid[4][5], grid[4][6], grid[4][7], grid[4][8]])
+        file_writer.writerow([grid[5][0], grid[5][1], grid[5][2], grid[5][3], grid[5][4], grid[5][5], grid[5][6], grid[5][7], grid[5][8]])
+        file_writer.writerow([grid[6][0], grid[6][1], grid[6][2], grid[6][3], grid[6][4], grid[6][5], grid[6][6], grid[6][7], grid[6][8]])
+        file_writer.writerow([grid[7][0], grid[7][1], grid[7][2], grid[7][3], grid[7][4], grid[7][5], grid[7][6], grid[7][7], grid[7][8]])
+        file_writer.writerow([grid[8][0], grid[8][1], grid[8][2], grid[8][3], grid[8][4], grid[8][5], grid[8][6], grid[8][7], grid[8][8]])
+
+def csvload(grid):
+    for x in range(0,9):
+        for y in range(0,9):
+            if grid[x][y] == 0:
+                grid[x][y] = 0.0
+            if grid[x][y] == 1:
+                grid[x][y] = 0.125
+            if grid[x][y] == 2:
+                grid[x][y] = 0.25
+            if grid[x][y] == 3:
+                grid[x][y] = 0.375
+            if grid[x][y] == 4:
+                grid[x][y] = 0.5
+            if grid[x][y] == 5:
+                grid[x][y] = 0.625
+            if grid[x][y] == 6:
+                grid[x][y] = 0.75
+            if grid[x][y] == 7:
+                grid[x][y] = 0.875
+            if grid[x][y] == 8:
+                grid[x][y] = 1
+            if grid[x][y] == ' ':
+                grid[x][y] = -1
+    
+    return grid
+     
+
+
 def playgame():
     gridsize = 9
     numberofmines = 10
@@ -220,7 +263,11 @@ def playgame():
                 return
 
         showgrid(currgrid)
+<<<<<<< HEAD
         print("hello world")
+=======
+        csvpush(currgrid)
+>>>>>>> lotivio-branch
         print(message)
 
 playgame()
