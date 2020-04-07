@@ -160,29 +160,31 @@ def csvpush(grid):
     grid_file.close()
 
 def csvload(grid):
-    newgrid = grid
+    newgrid = [row[:]for row in grid]
     for x in range(0,9):
         for y in range(0,9):
-            if grid[x][y] == 0:
+            if grid[x][y] == '0':
                 newgrid[x][y] = 0.0
-            if grid[x][y] == 1:
+            if grid[x][y] == '1':
+                print("asdf")
                 newgrid[x][y] = 0.125
-            if grid[x][y] == 2:
+            if grid[x][y] == '2':
                 newgrid[x][y] = 0.25
-            if grid[x][y] == 3:
+            if grid[x][y] == '3':
                 newgrid[x][y] = 0.375
-            if grid[x][y] == 4:
+            if grid[x][y] == '4':
                 newgrid[x][y] = 0.5
-            if grid[x][y] == 5:
+            if grid[x][y] == '5':
                 newgrid[x][y] = 0.625
-            if grid[x][y] == 6:
+            if grid[x][y] == '6':
                 newgrid[x][y] = 0.75
-            if grid[x][y] == 7:
+            if grid[x][y] == '7':
                 newgrid[x][y] = 0.875
-            if grid[x][y] == 8:
+            if grid[x][y] == '8':
                 newgrid[x][y] = 1
             if grid[x][y] == ' ':
                 newgrid[x][y] = -1
+            print(newgrid[x][y])
     return newgrid
      
 def promptread():

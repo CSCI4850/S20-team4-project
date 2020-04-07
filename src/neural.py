@@ -27,5 +27,4 @@ def main():
     val = 'a1'
     writeresponse(val)
 
-
 main()
