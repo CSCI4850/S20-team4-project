@@ -11,7 +11,9 @@ Download the Numpy wheel from
     http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
     
 Run these commands in your shell
+        
         pip install keras
+        
         pip install numpy-'(current version file.whl)'
         
 This project utilizes Python Jupyter Notebooks via JupyterLab for development
